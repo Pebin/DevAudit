@@ -15,7 +15,11 @@ namespace DevAudit.AuditLibrary
         public string ReasonPhrase { get; set; }
         public HttpRequestMessage Request { get; set; }
         public HttpException(string request_parameter, HttpStatusCode status_code, string reason_phrase, HttpRequestMessage request) 
-            : base("HTTP error code was received or did not receieve expected HTTP response.")
+            : base($"HTTP error code was received or did not receieve expected HTTP response. \n " +
+                   $"RequestParameter: {request_parameter}, \n " +
+                   $"StatusCode: {status_code},\n " +
+                   $"ReasonPhrase: {reason_phrase}, \n " +
+                   $"Request: {request}")
         {
             this.RequestParameter = request_parameter;
             this.StatusCode = status_code;
